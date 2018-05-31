@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/sendanor/norjs/issues"
   },
-  "homepage": "https://github.com/sendanor/norjs#readme"
+  "homepage": "https://github.com/sendanor/norjs#readme",
+  "dependencies": {
+    "norjs": "file:./src"
+  }
 }

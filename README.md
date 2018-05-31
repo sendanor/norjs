@@ -10,9 +10,13 @@ For development, you will only need NPM installed on your environment.
 
     $ git clone https://github.com/sendanor/norjs.git
     $ cd norjs
-    $ npm install
-
+    $ npm install norjs
+ 
+## Tutorial
+    
 ### Configure
+
+### Code
 
 ### Build
 
