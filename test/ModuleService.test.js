@@ -71,7 +71,11 @@ describe('ModuleService', () => {
 
 		it('can get a registered module', () => {
 
+			class Foo {}
 
+			ModuleService.register("Foo", Foo);
+
+			assert.equal(ModuleService.get("Foo"), Foo);
 
 		});
 	});
