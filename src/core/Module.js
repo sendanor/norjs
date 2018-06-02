@@ -12,10 +12,25 @@ export default function ModuleFactory (ModuleService) {
 	 */
 	const AbstractModule = ModuleService.get("AbstractModule");
 
+	/**
+	 * @type {AssertUtils}
+	 */
+	const AssertUtils = ModuleService.get("AssertUtils");
+
 	return class Module extends AbstractModule {
 
-		constructor () {
+		constructor (name, dependencies) {
 			super("Module");
+
+			this.__setName(name);
+			this.__setDependencies(dependencies);
+		}
+
+		/**
+		 * Returns the module name
+		 */
+		get name () {
+			return this.__name;
 		}
 
 		/**
@@ -148,6 +163,29 @@ export default function ModuleFactory (ModuleService) {
 		 */
 		directive (name, implementation) {
 			return this;
+		}
+
+		/**
+		 * Set module name
+		 *
+		 * @param value {string}
+		 * @private
+		 */
+		__setName (value) {
+			AssertUtils.isString(value);
+			this.__name = value;
+		}
+
+		/**
+		 * Set module dependencies as an array of module names
+		 *
+		 * @param value {array.<string>}
+		 * @private
+		 */
+		__setDependencies (value) {
+			AssertUtils.isArray(value);
+			AssertUtils.eachIsString(value);
+			this.__dependencies = value;
 		}
 
 	};

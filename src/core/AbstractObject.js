@@ -1,6 +1,8 @@
 
 /** Abstract base class for all NorJS objects
  *
+ * **Note!** This class is being used manually to boostrap NorJS module system. See more at ../index.js.
+ *
  * @ngInject
  * @return {AbstractObject}
  */

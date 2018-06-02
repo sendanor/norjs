@@ -1,4 +1,4 @@
-# NorJS
+# NorJS -- Full Stack Framework
 
 ## Requirements
 

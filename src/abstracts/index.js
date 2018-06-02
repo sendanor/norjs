@@ -7,4 +7,4 @@ export default norjs.module('norjs.abstracts', [])
     .factory('AbstractObject', AbstractObjectFactory)
 	.factory('AbstractController', AbstractControllerFactory)
 	.factory('AbstractElementController', AbstractElementControllerFactory)
-    .name;
+	.name;
