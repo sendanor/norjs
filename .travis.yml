@@ -1,0 +1,37 @@
+language: node_js
+node_js:
+  - "9"
+  - "8"
+  - "7"
+  - "6"
+  - "5"
+  - "4"
+  - "0.12"
+  - "0.10"
+matrix:
+  exclude:
+    - node_js: "8"
+      env: ENABLE_COVERAGE=true
+    - node_js: "7"
+      env: ENABLE_COVERAGE=true
+    - node_js: "6"
+      env: ENABLE_COVERAGE=true
+    - node_js: "5"
+      env: ENABLE_COVERAGE=true
+    - node_js: "4"
+      env: ENABLE_COVERAGE=true
+    - node_js: "0.12"
+      env: ENABLE_COVERAGE=true
+    - node_js: "0.10"
+      env: ENABLE_COVERAGE=true
+  allow_failures:
+    - node_js: "7"
+    - node_js: "5"
+    - node_js: "0.12"
+    - node_js: "0.10"
+    - env: ENABLE_COVERAGE=true
+dist: trusty
+env:
+  matrix:
+    - ENABLE_COVERAGE=false
+    - ENABLE_COVERAGE=true
