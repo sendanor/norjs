@@ -1,5 +1,7 @@
 import norjs from '../../core/index';
 
-export default norjs.module('norjs.common.menu', [
+import MenuController from './MenuController';
 
+export default norjs.module('norjs.common.menu', [
+	MenuController
 ]);

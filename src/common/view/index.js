@@ -1,5 +1,7 @@
 import norjs from '../../core/index';
 
-export default norjs.module('norjs.common.view', [
+import ViewController from './ViewController';
 
+export default norjs.module('norjs.common.view', [
+	ViewController
 ]);

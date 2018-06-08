@@ -1,5 +1,7 @@
 import norjs from '../../../core/index';
 
-export default norjs.module('norjs.common.form.textInput', [
+import TextInputController from './TextInputController';
 
+export default norjs.module('norjs.common.form.textInput', [
+	TextInputController
 ]);

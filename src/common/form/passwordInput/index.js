@@ -1,5 +1,7 @@
 import norjs from '../../../core/index';
 
-export default norjs.module('norjs.common.form.passwordInput', [
+import PasswordInputController from './PasswordInputController';
 
+export default norjs.module('norjs.common.form.passwordInput', [
+	PasswordInputController
 ]);

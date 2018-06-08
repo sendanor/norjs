@@ -17,6 +17,13 @@ export default function AbstractControllerFactory (AbstractObject) {
 			return "AbstractController";
 		}
 
+		static getTemplate () {
+			return "";
+		}
+
+		static getBindings () {
+		}
+
 	};
 
 }

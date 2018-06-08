@@ -1,3 +1,5 @@
+import template from './button-template.html';
+
 /** Factory for ButtonController
  *
  * @param ModuleService {ModuleService}
@@ -13,6 +15,10 @@ export default function ButtonControllerFactory (ModuleService, AbstractElementC
 
 		static getNorName () {
 			return "ButtonController";
+		}
+
+		static getTemplate () {
+			return template;
 		}
 
 	}

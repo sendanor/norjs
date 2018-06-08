@@ -1,5 +1,7 @@
 import norjs from '../../../core/index';
 
-export default norjs.module('norjs.common.form.button', [
+import ButtonController from './ButtonController';
 
+export default norjs.module('norjs.common.form.button', [
+	ButtonController
 ]);
