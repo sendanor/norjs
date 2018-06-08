@@ -64,6 +64,36 @@ describe('ModuleService', () => {
 
 		});
 
+		it('can register a service', () => {
+
+			class FooService {
+
+				static getNorType () {
+					return "Service";
+				}
+
+				static getNorName () {
+					return "FooService";
+				}
+
+				getInternalValue () {
+					return 123;
+				}
+
+				getNorName () {
+					return "FooService";
+				}
+
+			}
+
+			ModuleService.register(FooService);
+
+			const foo = ModuleService.get("FooService");
+
+			assert.equal(foo.getInternalValue(), 123);
+
+		});
+
 		it('can register a factory', () => {
 
 			class OrigFoo {
@@ -91,7 +121,7 @@ describe('ModuleService', () => {
 
 	describe('#get', () => {
 
-		it('can get a registered module', () => {
+		it('can get a registered thing', () => {
 
 			class Foo {
 
