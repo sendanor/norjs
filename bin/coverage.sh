@@ -17,6 +17,6 @@ export DEBUG_ENABLE_COLORS=false
 mkdir -p ./coverage/
 ./node_modules/.bin/mocha -R mocha-lcov-reporter tests/test-*.js > ./coverage/coverage_temp.lcov
 
-sed 's,SF:,SF:src/,' ./coverage/coverage_temp.lcov > ./coverage/coverage.lcov
+sed 's,SF:,SF:lib/,' ./coverage/coverage_temp.lcov > ./coverage/coverage.lcov
 
 cat ./coverage/coverage.lcov|./node_modules/coveralls/bin/coveralls.js

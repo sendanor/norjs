@@ -9,9 +9,9 @@ cd "$pkg_root_dir"
 if test "x$ENABLE_COVERAGE" = x; then
     exec npm run -s test-spec
 else
-    if test -d ./src-cov/; then
-        rm -rf ./src-cov/
+    if test -d ./lib-cov/; then
+        rm -rf ./lib-cov/
     fi
-    jscover ./src ./src-cov
+    jscover ./lib ./lib-cov
     exec npm run -s test-coverage
 fi
