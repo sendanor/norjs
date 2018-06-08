@@ -22,8 +22,8 @@ describe('AbstractService', () => {
 		it('can be used to create concrete class', () => {
 
 			class FooService extends AbstractService {
-				constructor () {
-					super("FooService");
+				static getNorName () {
+					return "FooService";
 				}
 			}
 

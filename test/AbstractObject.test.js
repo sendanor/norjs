@@ -19,8 +19,8 @@ describe('AbstractObject', () => {
 		it('can be used to create concrete class', () => {
 
 			class FooClass extends AbstractObject {
-				constructor () {
-					super("FooClass");
+				static getNorName () {
+					return "FooClass";
 				}
 			}
 

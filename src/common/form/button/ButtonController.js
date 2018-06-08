@@ -1,22 +1,18 @@
-
 /** Factory for ButtonController
  *
  * @param ModuleService {ModuleService}
- * @constructor
+ * @param AbstractElementController {AbstractElementController}
  * @ngInject
  */
-export default function ButtonControllerFactory (ModuleService) {
-
-	/** @member {AbstractElementController} */
-	const AbstractElementController = ModuleService.get('AbstractElementController');
+export default function ButtonControllerFactory (ModuleService, AbstractElementController) {
 
 	/**
 	 * Controller for nor-button
 	 */
 	class ButtonController extends AbstractElementController  {
 
-		constructor () {
-			super("ButtonController");
+		static getNorName () {
+			return "ButtonController";
 		}
 
 	}

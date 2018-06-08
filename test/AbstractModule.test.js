@@ -1,27 +1,60 @@
 import 'babel-polyfill'
 import assert from 'assert';
 import AbstractObjectFactory from '../lib/core/AbstractObject';
-import AbstractModuleFactory from '../lib/core/AbstractModule';
-import ModuleServiceFactory from '../lib/core/ModuleService';
 import AbstractServiceFactory from '../lib/core/AbstractService';
+import AbstractModuleServiceFactory from '../lib/core/AbstractModuleService';
+import ModuleServiceFactory from '../lib/core/ModuleService';
+import AbstractModuleFactory from '../lib/core/AbstractModule';
 
 describe('AbstractModule', () => {
 
-	let AbstractObject, AbstractModule, ModuleService, AbstractService;
+	/**
+	 * @type {AbstractObject}
+	 */
+	let AbstractObject;
+
+	/**
+	 * @type {AbstractService}
+	 */
+	let AbstractService;
+
+	/**
+	 * @type {ModuleService}
+	 */
+	let ModuleService;
+
+	/**
+	 * @type {AbstractModule}
+	 */
+	let AbstractModule;
+
+	/**
+	 * @type {AbstractModuleService}
+	 */
+	let AbstractModuleService;
 
 	beforeEach( () => {
 		AbstractObject = AbstractObjectFactory();
 		AbstractService = AbstractServiceFactory(AbstractObject);
-		ModuleService = new (ModuleServiceFactory(AbstractService))();
-		ModuleService.register("AbstractObject", AbstractObject);
-		AbstractModule = AbstractModuleFactory(ModuleService);
+		AbstractModuleService = AbstractModuleServiceFactory(AbstractService);
+		ModuleService = new (ModuleServiceFactory(AbstractModuleService))();
+		ModuleService.register(
+			  AbstractObject
+			, AbstractService
+			, AbstractModuleService
+			, ModuleService
+			, AbstractModuleFactory
+		);
+
+		AbstractModule = ModuleService.get('AbstractModule');
 	});
 
 	afterEach( () => {
-		AbstractModule = undefined;
+		AbstractObject = undefined;
 		AbstractService = undefined;
 		ModuleService = undefined;
 		AbstractModule = undefined;
+		AbstractModuleService = undefined;
 	});
 
 	describe('#constructor', () => {
@@ -29,8 +62,8 @@ describe('AbstractModule', () => {
 		it('can be used to create concrete class', () => {
 
 			class FooModule extends AbstractModule {
-				constructor () {
-					super("FooModule");
+				static getNorName () {
+					return "FooModule";
 				}
 			}
 

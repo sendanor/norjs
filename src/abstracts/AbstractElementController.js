@@ -3,14 +3,18 @@
  *
  * @ngInject
  * @param AbstractController {AbstractController}
- * @return {AbstractElementController}
+ * @return {AbstractComponentController}
  */
-export default function AbstractElementControllerFactory (AbstractController) {
+export default function AbstractComponentControllerFactory (AbstractController) {
 
-	return class AbstractElementController extends AbstractController {
+	return class AbstractComponentController extends AbstractController {
 
-		constructor (norName) {
-			super(norName);
+		static getNorType () {
+			return "Component";
+		}
+
+		static getNorName () {
+			return "AbstractComponentController";
 		}
 
 	};

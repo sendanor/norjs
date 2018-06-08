@@ -6,8 +6,8 @@ import AbstractElementController from '../../../abstracts/AbstractElementControl
  */
 export default class TextInputController extends AbstractElementController  {
 
-	constructor () {
-		super("TextInputController");
+	static getNorName () {
+		return "TextInputController";
 	}
 
 }

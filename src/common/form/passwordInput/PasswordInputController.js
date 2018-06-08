@@ -7,8 +7,8 @@ import AbstractElementController from '../../../abstracts/AbstractElementControl
  */
 export default class PasswordInputController extends AbstractElementController  {
 
-	constructor () {
-		super("PasswordInputController");
+	static getNorName () {
+		return "PasswordInputController";
 	}
 
 }

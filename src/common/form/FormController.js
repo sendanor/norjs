@@ -6,8 +6,8 @@ import AbstractElementController from '../../../abstracts/AbstractElementControl
  */
 export default class FormController extends AbstractElementController  {
 
-	constructor () {
-		super("FormController");
+	static getNorName () {
+		return "FormController";
 	}
 
 }

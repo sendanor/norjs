@@ -1,4 +1,5 @@
-import norjs from 'norjs';
+import norjs from '../core/index';
 
-export default norjs.module('norjs.objects', [])
-	.name;
+export default norjs.module('norjs.objects', [
+
+]);
