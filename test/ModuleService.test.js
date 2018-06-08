@@ -1,6 +1,6 @@
 import 'babel-polyfill'
 import assert from 'assert';
-let libDir = process.env.ENABLE_COVERAGE ? '../lib-cov' : '../lib';
+let libDir = process.env.ENABLE_COVERAGE === "true" ? '../lib-cov' : '../lib';
 let AbstractObjectFactory = require(libDir+'/core/AbstractObject').default;
 let AbstractServiceFactory = require(libDir+'/core/AbstractService').default;
 let AbstractModuleServiceFactory = require(libDir+'/core/AbstractModuleService').default;
