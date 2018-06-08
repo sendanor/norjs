@@ -1,10 +1,12 @@
 import 'babel-polyfill'
 import assert from 'assert';
-import AbstractObjectFactory from '../lib/core/AbstractObject';
-import AbstractServiceFactory from '../lib/core/AbstractService';
-import AbstractModuleServiceFactory from '../lib/core/AbstractModuleService';
-import ModuleServiceFactory from '../lib/core/ModuleService';
-import AbstractModuleFactory from '../lib/core/AbstractModule';
+
+let libDir = process.env.ENABLE_COVERAGE ? '../lib-cov' : '../lib';
+let AbstractObjectFactory = require(libDir+'/core/AbstractObject').default;
+let AbstractServiceFactory = require(libDir+'/core/AbstractService').default;
+let AbstractModuleServiceFactory = require(libDir+'/core/AbstractModuleService').default;
+let ModuleServiceFactory = require(libDir+'/core/ModuleService').default;
+let AbstractModuleFactory = require(libDir+'/core/AbstractModule').default;
 
 describe('AbstractModule', () => {
 
