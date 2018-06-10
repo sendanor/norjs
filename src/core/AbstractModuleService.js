@@ -104,9 +104,16 @@ export default function AbstractModuleServiceFactory (AbstractService) {
 		/**
 		 * Register everything from a module
 		 *
-		 * @param module {typeof AbstractObject}
+		 * @param module {typeof AbstractModule}
 		 */
 		registerModule (module) {
+			if (!(module && _.isFunction(module.getItems))) {
+				throw new TypeError("Not a module: " + module);
+			}
+			const items = module.getItems();
+			_.forEach(items, item => {
+				this.register(item);
+			});
 			return this;
 		}
 

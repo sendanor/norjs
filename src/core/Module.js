@@ -13,15 +13,6 @@ export default function ModuleFactory (AbstractModule) {
 			return "Module";
 		}
 
-		/**
-		 *
-		 * @param name {string}
-		 * @param dependencies {Array.<string>}
-		 */
-		module (name, dependencies) {
-
-		}
-
 	};
 
 }

@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /**
  * Abstract base class for NorJS modules
  *
@@ -35,7 +37,27 @@ export default function AbstractModuleFactory (AbstractObject) {
 			 * @type {Array.<string>}
 			 * @private
 			 */
-			this.__dependencies = dependencies;
+			this.__dependencies = _.concat([], dependencies);
+
+			/**
+			 *
+			 * @type {Object}
+			 * @private
+			 */
+			this.__modules = {
+				[moduleName]: this
+			};
+
+			/**
+			 * Registered items
+			 *
+			 * @type {Array}
+			 * @private
+			 */
+			this.__items = [];
+
+			this.MODULE_ADDED_EVENT = 'module:added';
+			this.ITEM_ADDED_EVENT = 'item:added';
 
 		}
 
@@ -46,140 +68,134 @@ export default function AbstractModuleFactory (AbstractObject) {
 		/**
 		 * Returns the module name
 		 */
-		get name () {
+		getName () {
 			return this.__name;
 		}
 
 		/**
-		 * Register a factory
-		 *
-		 * @param name {string}
-		 * @param implementation
-		 * @returns {Module}
+		 * Returns the module name
 		 */
-		factory (name, implementation) {
-			return this;
+		get name () {
+			return this.getName();
 		}
 
 		/**
-		 * Register a constant
 		 *
 		 * @param name {string}
-		 * @param implementation
-		 * @returns {Module}
+		 * @param dependencies {Array.<string>}
+		 * @return {AbstractModule}
 		 */
-		constant (name, implementation) {
-			return this;
+		module (name, dependencies=undefined) {
+
+			if (dependencies) {
+				let module = this.__createModule(name, dependencies);
+				this.__registerModule(module);
+				return module;
+			}
+
+			return this.__getModuleByName(name);
 		}
 
 		/**
-		 * Register a filter
 		 *
-		 * @param name {string}
-		 * @param implementation
-		 * @returns {Module}
+		 * @param ...implementations {*}
 		 */
-		filter (name, implementation) {
-			return this;
+		register (...implementations) {
+			_.forEach(implementations, implementation => {
+				if (_.isArray(implementation)) {
+					this.register(...implementation);
+					return;
+				}
+				this.__registerItem(implementation);
+			});
 		}
 
 		/**
-		 * Register a variable
+		 * Get every registered item.
 		 *
-		 * @param name {string}
-		 * @param implementation
-		 * @returns {Module}
+		 * @returns {Array}
 		 */
-		variable (name, implementation) {
-			return this;
+		getItems () {
+
+			const myItems = _.cloneDeep(this.__items);
+
+			const myModuleItems = _.reduce(
+				_.map(
+					_.filter(Object.keys(this.__modules), name => name !== this.__name),
+					name => this.__modules[name].getItems()
+				),
+				(a, b) => a.concat(_.isArray(b) ? b : [b]),
+				[]
+			);
+
+			return _.uniq(_.concat([], myItems, myModuleItems));
 		}
 
 		/**
-		 * Register an abstract class
 		 *
-		 * @param name {string}
-		 * @param implementation
-		 * @returns {Module}
+		 * @param implementation {*}
+		 * @return {boolean}
 		 */
-		abstractClass (name, implementation) {
-			return this;
+		__hasRegisteredItem (implementation) {
+			return _.some(this.__items, i => i === implementation);
 		}
 
 		/**
-		 * Register a concrete class
 		 *
-		 * @param name {string}
-		 * @param implementation
-		 * @returns {Module}
 		 */
-		concreteClass (name, implementation) {
-			return this;
+		__registerItem (implementation) {
+			if (this.__hasRegisteredItem(implementation)) {
+				throw new TypeError("Module already has implementation");
+			}
+			this.__items.push(implementation);
+			this.emit(this.ITEM_ADDED_EVENT, implementation);
 		}
 
 		/**
-		 * Register an interface class
 		 *
+		 * @return {AbstractObject}
+		 * @private
 		 * @param name {string}
-		 * @param implementation
-		 * @returns {Module}
+		 * @param dependencies {Array.<string>}
 		 */
-		interfaceClass (name, implementation) {
-			return this;
+		__createModule (name, dependencies) {
+			return new (this.getClass())(name, dependencies);
 		}
 
 		/**
-		 * Register a service
 		 *
-		 * @param name {string}
-		 * @param implementation
-		 * @returns {Module}
+		 * @param module {AbstractModule}
+		 * @return {AbstractModule}
+		 * @private
 		 */
-		service (name, implementation) {
-			return this;
+		__registerModule (module) {
+			const name = module.getName();
+			if (this.__hasModuleByName(name)) {
+				throw new TypeError("Module exists already: " + name);
+			}
+			this.__modules[name] = module;
+			this.emit(this.MODULE_ADDED_EVENT, name);
 		}
 
 		/**
-		 * Register a controller
 		 *
 		 * @param name {string}
-		 * @param implementation
-		 * @returns {Module}
+		 * @return {boolean}
+		 * @private
 		 */
-		controller (name, implementation) {
-			return this;
+		__hasModuleByName (name) {
+			return _.has(this.__modules, name);
 		}
 
 		/**
-		 * Register a template
 		 *
 		 * @param name {string}
-		 * @param implementation
-		 * @returns {Module}
+		 * @return {AbstractModule}
+		 * @private
 		 */
-		template (name, implementation) {
-			return this;
-		}
-
-		/**
-		 * Register a component
-		 *
-		 * @param name {string}
-		 * @param implementation
-		 * @returns {Module}
-		 */
-		component (name, implementation) {
-			return this;
-		}
-
-		/**
-		 * Register a directive
-		 *
-		 * @param name {string}
-		 * @param implementation
-		 * @returns {Module}
-		 */
-		directive (name, implementation) {
-			return this;
+		__getModuleByName (name) {
+			if (!this.__hasModuleByName(name)) throw new TypeError("No module found by name " + name);
+			return this.__modules[name];
 		}
 
 		/**

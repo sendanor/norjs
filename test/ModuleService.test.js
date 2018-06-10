@@ -5,6 +5,8 @@ let AbstractObjectFactory = require(libDir+'/core/AbstractObject').default;
 let AbstractServiceFactory = require(libDir+'/core/AbstractService').default;
 let AbstractModuleServiceFactory = require(libDir+'/core/AbstractModuleService').default;
 let ModuleServiceFactory = require(libDir+'/core/ModuleService').default;
+let AbstractModuleFactory = require(libDir+'/core/AbstractModule').default;
+let ModuleFactory = require(libDir+'/core/Module').default;
 
 describe('ModuleService', () => {
 
@@ -30,11 +32,22 @@ describe('ModuleService', () => {
 	 */
 	let ModuleService;
 
+	/**
+	 * @type {Module}
+	 */
+	let Module;
+
 	beforeEach( () => {
 		AbstractObject = AbstractObjectFactory();
 		AbstractService = AbstractServiceFactory(AbstractObject);
 		AbstractModuleService = AbstractModuleServiceFactory(AbstractService);
 		ModuleService = new (ModuleServiceFactory(AbstractModuleService))();
+		ModuleService.register(
+			AbstractObject
+			, AbstractService
+			, AbstractModuleService
+			, ModuleService
+		);
 	});
 
 	afterEach( () => {
@@ -118,6 +131,36 @@ describe('ModuleService', () => {
 			assert.equal(OrigFoo, Foo);
 
 		});
+
+		it('can register a module', () => {
+
+			ModuleService.register(AbstractModuleFactory, ModuleFactory);
+
+			const Module = ModuleService.get("Module");
+
+			class Foo {
+
+				static getNorType () {
+					return "Class";
+				}
+
+				static getNorName () {
+					return "Foo";
+				}
+
+			}
+
+			let module = new Module("FooModule");
+
+			module.register(Foo);
+
+			ModuleService.register(module);
+
+			const FooB = ModuleService.get("Foo");
+			assert.equal(Foo, FooB);
+
+		});
+
 	});
 
 	describe('#get', () => {

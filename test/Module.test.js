@@ -71,5 +71,7 @@ describe('Module', () => {
 			assert.equal(foo.getNorName(), "Module");
 
 		});
+
 	});
+
 });
