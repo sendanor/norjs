@@ -1,6 +1,6 @@
 {
   "name": "norjs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "NorJS Full Stack Framework",
   "main": "lib/index.js",
   "scripts": {
