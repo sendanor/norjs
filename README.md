@@ -7,6 +7,12 @@
 
 # NorJS -- Full Stack Framework
 
+**Note:** *This framework is not yet finished.* 
+
+It has working module system, but it still lacks a lot of features. 
+
+You can <a href="https://www.bountysource.com/teams/norjs">help us</a> finish it, and earn some bounties while doing that.
+
 ## Requirements
 
 For development, you will only need NPM installed on your environment.
