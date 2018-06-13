@@ -91,44 +91,44 @@ import template from "./foo-template.html";
  * @ngInject
  */
 export default FooFactory (BarService, AbstractController) {
-	
-	
-	/** The factory function can return anything.
-	 * 
-	 * There is ready to use abstract classes for everything.
-	 */
+    
+    
+    /** The factory function can return anything.
+     * 
+     * There is ready to use abstract classes for everything.
+     */
     return class FooController extends AbstractComponentController {
-    	
-    	/**
-    	 * You start by defining a name for the class.
-    	 * 
-    	 * This cannot be automatically detected from the class name because it might be obscured by a minifier.
-    	 * 
-    	 * Also, you might want to control which name it will have. This name will be used as an unique keyword for this
-    	 * class in LoggingService and other built-in and user-defined solutions.
-         */
-    	static getNorName () {
-    		return "Foo";
-    	}
         
-    	/**
-    	 * This is how you can define how this component will be defined as a tag. 
-    	 * 
-    	 * Eg. `norFoo` will be `<nor-foo></nor-foo>`
+        /**
+         * You start by defining a name for the class.
+         * 
+         * This cannot be automatically detected from the class name because it might be obscured by a minifier.
+         * 
+         * Also, you might want to control which name it will have. This name will be used as an unique keyword for this
+         * class in LoggingService and other built-in and user-defined solutions.
          */
-    	static getTagName () {
-    		return "norFoo";
-    	}
+        static getNorName () {
+            return "Foo";
+        }
         
-    	/**
-    	 * Here you can define a static method which returns the template.
-    	 * 
-    	 * You may also override it in the derived classes if you need to.
-    	 * 
-    	 * With AngularJS, this will be passed as the template property to the configuration.
-    	 * 
-    	 * @returns {string}
-    	 */
+        /**
+         * This is how you can define how this component will be defined as a tag. 
+         * 
+         * Eg. `norFoo` will be `<nor-foo></nor-foo>`
+         */
+        static getTagName () {
+            return "norFoo";
+        }
+        
+        /**
+         * Here you can define a static method which returns the template.
+         * 
+         * You may also override it in the derived classes if you need to.
+         * 
+         * With AngularJS, this will be passed as the template property to the configuration.
+         * 
+         * @returns {string}
+         */
         static getTemplate () {
             return template;
         }
