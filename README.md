@@ -37,30 +37,30 @@ export default BarServiceFactory (AbstractService) {
 
     class BarInstance {
 
-		getValue () {
-			return this._value;
-		}
-		
-		setValue (value) {
-			this._value = value;
-		}
-    	
-		destroy () {
-			// ...
-		}
-		
+        getValue () {
+            return this._value;
+        }
+        
+        setValue (value) {
+            this._value = value;
+        }
+        
+        destroy () {
+            // ...
+        }
+        
     }
 
-	return class BarService extends AbstractController {
-		
-    	/** 
-    	 * @returns {BarInstance}
-    	 */
-    	init () {
-    		return new BarInstance();
-    	}
-		
-	};
+    return class BarService extends AbstractController {
+        
+        /** 
+         * @returns {BarInstance}
+         */
+        init () {
+            return new BarInstance();
+        }
+        
+    };
 }
 ```
 
@@ -71,53 +71,53 @@ import "foo-styles.scss";
 import template from "./foo-template.html";
 
 export default FooFactory (BarService, AbstractController) {
-	return class FooController extends AbstractController {
-    	
-    	static getTemplate () {
-    		return template;
-    	}
-    	
-    	static getBindings () {
-    		return _.merge({}, super.getBindings(), {
-    			"_onClick": "&onClick",
-    			"_value": "<value"
-    		});
-    	}
-    	
-    	constructor () {
-    		super();
-    		
-    		/** 
-    		 * @member {BarInstance}
-    		 */
-    		this._something = BarService.init();
-    	}
+    return class FooController extends AbstractController {
+        
+        static getTemplate () {
+            return template;
+        }
+        
+        static getBindings () {
+            return _.merge({}, super.getBindings(), {
+                "_onClick": "&onClick",
+                "_value": "<value"
+            });
+        }
+        
+        constructor () {
+            super();
+            
+            /** 
+             * @member {BarInstance}
+             */
+            this._something = BarService.init();
+        }
     
-    	get value () {
-    		return this._something.getValue();
-    	}
-    	
-    	onInit () {
-    		this._something.setValue(this._value);
-    	}
-    	
-    	onDestroy () {
-    		// ...
-    		this._something.destroy();
-    	}
-    	
-    	onChanges (changes) {
-    		// ...
-    		
-    		if (changes._value) {
-    			this._something.setValue(this._value);
-    		}
-    	}
-    	
-    	click () {
-    		this._onClick({value: this._something.getValue()});
-    	}
-    	
+        get value () {
+            return this._something.getValue();
+        }
+        
+        onInit () {
+            this._something.setValue(this._value);
+        }
+        
+        onDestroy () {
+            // ...
+            this._something.destroy();
+        }
+        
+        onChanges (changes) {
+            // ...
+            
+            if (changes._value) {
+                this._something.setValue(this._value);
+            }
+        }
+        
+        click () {
+            this._onClick({value: this._something.getValue()});
+        }
+        
     }
 }
 ```
