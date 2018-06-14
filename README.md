@@ -225,7 +225,7 @@ export default FooFactory (BarService, AbstractController) {
 #### Component's template as `foo-template.html`
 
 ```html
-<nor-text-input model="$ctrl.value"></nor-text-input>
+<nor-text model="$ctrl.value"></nor-text>
 <nor-button on-click="$ctrl.click()" label="common.save"></nor-button>
 ```
 

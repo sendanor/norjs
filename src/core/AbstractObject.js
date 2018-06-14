@@ -43,7 +43,7 @@ export default function AbstractObjectFactory () {
 		 *
 		 * @returns {string}
 		 */
-		static getNorName () {
+		static getName () {
 			return "AbstractObject";
 		}
 
@@ -67,7 +67,7 @@ export default function AbstractObjectFactory () {
 			 *
 			 * @member {string}
 			 */
-			this.__norName = this.getClass().getNorName();
+			this.__name = this.getClass().getName();
 
 			/**
 			 * Registered event listeners
@@ -93,7 +93,7 @@ export default function AbstractObjectFactory () {
 		 * @returns {string}
 		 */
 		get norName () {
-			return this.__norName;
+			return this.__name;
 		}
 
 		/**
@@ -102,7 +102,7 @@ export default function AbstractObjectFactory () {
 		 * @returns {string}
 		 */
 		getNorName () {
-			return this.__norName;
+			return this.__name;
 		}
 
 		/**

@@ -9,12 +9,16 @@ export default function AbstractControllerFactory (AbstractObject) {
 
 	return class AbstractController extends AbstractObject {
 
-		static getNorType () {
+		static getType () {
 			return "Controller";
 		}
 
-		static getNorName () {
+		static getName () {
 			return "AbstractController";
+		}
+
+		static getTagName () {
+			throw new Error("" + this.getName() + ".getTagName() not defined");
 		}
 
 		static getTemplate () {
@@ -22,6 +26,7 @@ export default function AbstractControllerFactory (AbstractObject) {
 		}
 
 		static getBindings () {
+			return {};
 		}
 
 	};
