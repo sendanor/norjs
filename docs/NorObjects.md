@@ -1,5 +1,5 @@
 
-### Preserved NorJS object methods
+## Preserved NorJS object methods
 
 We use special methods to detect features in an NorJS object.
 
@@ -10,16 +10,18 @@ affect how you name your own methods. See also our
 You can and should override these methods in your own derived classes to 
 customize functionality.
 
-#### Information about the class
+================================================================================
 
-##### `.norName()`
+### Information about the class
+
+#### `.norName()`
 
 This method returns an unique name of the NorJS class as a `string`.
 
 It can be used on both as a static method (called on the class constructor) as 
 well as on any instance object. 
 
-##### `.norType()`
+#### `.norType()`
 
 Returns the type of this NorJS class, as a `string`.
 
@@ -44,12 +46,14 @@ classes.
 It can be used on both as a static method (called on the class constructor) as 
 well as on any instance object. 
 
-##### `.norClass()`
+#### `.norClass()`
 
 Returns the class constructor.
 
 It can be used on both as a static method (called on the class constructor) as 
 well as on any instance object. 
+
+================================================================================
 
 ### Information about the HTML element
 
@@ -70,9 +74,9 @@ to the controller member variables.
 
 This follows the same format as in AngularJS.
 
-### Life cycle handlers
+================================================================================
 
-#### Life cycle handlers
+### Life cycle handlers
 
 **Note!** Our event handlers are special in a way that you don't need to call
  the super implementation yourself. This reduces accidental memory leak 
@@ -110,7 +114,9 @@ You may also return a promise.
 
 This is same as AngularJS `.$onChanges()`.
 
-#### Life cycle handler implementations
+================================================================================
+
+### Life cycle handler implementations
 
 These are default implementations for triggering life cycle operations. 
 
@@ -135,7 +141,7 @@ You may also return a promise.
 **Note!** You need to make sure each `.norDestroy()` implementation 
 is called, or call a `super.norDoDestroy()`, which does that for you.
 
-#### `.norDoChanges(changes)`
+### `.norDoChanges(changes)`
 
 Same as AngularJS `$onChanges()`.
 
