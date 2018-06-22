@@ -9,11 +9,11 @@ export default function AbstractUtilsFactory (AbstractObject) {
 
 	return class AbstractUtils extends AbstractObject {
 
-		static getNorType () {
+		static norType () {
 			return "Service";
 		}
 
-		static getNorName () {
+		static norName () {
 			return "AbstractUtils";
 		}
 

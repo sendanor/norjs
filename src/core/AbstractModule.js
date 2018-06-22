@@ -12,7 +12,7 @@ export default function AbstractModuleFactory (AbstractObject) {
 
 	return class AbstractModule extends AbstractObject {
 
-		static getNorName () {
+		static norName () {
 			return "AbstractModule";
 		}
 
@@ -23,6 +23,7 @@ export default function AbstractModuleFactory (AbstractObject) {
 		 * @param dependencies {Array.<string>}
 		 */
 		constructor (moduleName, dependencies) {
+
 			super();
 
 			/**
@@ -61,7 +62,7 @@ export default function AbstractModuleFactory (AbstractObject) {
 
 		}
 
-		getNorType () {
+		norType () {
 			return "Module";
 		}
 

@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /**
  * Abstract base class for NorJS services
  *
@@ -9,24 +11,24 @@ export default function AbstractControllerFactory (AbstractObject) {
 
 	return class AbstractController extends AbstractObject {
 
-		static getType () {
+		static norType () {
 			return "Controller";
 		}
 
-		static getName () {
+		static norName () {
 			return "AbstractController";
 		}
 
-		static getTagName () {
-			throw new Error("" + this.getName() + ".getTagName() not defined");
+		static norTagName () {
+			throw super.norError(".norTagName() not defined");
 		}
 
-		static getTemplate () {
+		static norTemplate () {
 			return "";
 		}
 
-		static getBindings () {
-			return {};
+		static norBindings (opts={}) {
+			return _.merge({}, opts);
 		}
 
 	};

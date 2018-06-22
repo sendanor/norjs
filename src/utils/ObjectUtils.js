@@ -10,7 +10,7 @@ export default function ObjectUtilsFactory (AbstractUtils) {
 
 	return class ObjectUtils extends AbstractUtils {
 
-		static getNorName () {
+		static norName () {
 			return "ObjectUtils";
 		}
 

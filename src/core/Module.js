@@ -9,7 +9,7 @@ export default function ModuleFactory (AbstractModule) {
 
 	return class Module extends AbstractModule {
 
-		static getNorName () {
+		static norName () {
 			return "Module";
 		}
 

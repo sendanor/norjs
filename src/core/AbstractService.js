@@ -11,11 +11,11 @@ export default function AbstractServiceFactory (AbstractObject) {
 
 	return class AbstractService extends AbstractObject {
 
-		static getNorType () {
+		static norType () {
 			return "Service";
 		}
 
-		static getNorName () {
+		static norName () {
 			return "AbstractService";
 		}
 

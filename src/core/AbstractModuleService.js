@@ -15,13 +15,23 @@ const ARGUMENT_NAMES = /([^\s,]+)/g;
  */
 export default function AbstractModuleServiceFactory (AbstractService) {
 
+	function getNorName (obj) {
+		return obj && _.isFunction(obj.norName) ? obj.norName() : undefined;
+	}
+
+	function getNorType (obj) {
+		return (obj && _.isFunction(obj.norType))
+			? obj.norType()
+			: (_.isFunctin(obj) ? "Factory" : "");
+	}
+
 	return class AbstractModuleService extends AbstractService {
 
-		static getNorType () {
+		static norType () {
 			return "Service";
 		}
 
-		static getNorName () {
+		static norName () {
 			return "AbstractModuleService";
 		}
 
@@ -54,9 +64,7 @@ export default function AbstractModuleServiceFactory (AbstractService) {
 
 				//console.log('implementation = ', implementation);
 
-				const type = (implementation && _.isFunction(implementation.getNorType))
-					? implementation.getNorType()
-					: (_.isFunction(implementation) ? "Factory" : "");
+				const type = getNorType(implementation);
 
 				console.log('type = ', type);
 
@@ -71,7 +79,7 @@ export default function AbstractModuleServiceFactory (AbstractService) {
 					this.registerModule(implementation);
 					return;
 				default:
-					this.registerInstance( implementation.getNorName(), implementation);
+					this.registerInstance( getNorName(implementation), implementation);
 					return;
 				}
 
@@ -124,7 +132,7 @@ export default function AbstractModuleServiceFactory (AbstractService) {
 		 */
 		registerService (ServiceClass) {
 			const service = new ServiceClass();
-			return this.registerInstance(service.getNorName(), service);
+			return this.registerInstance(getNorName(service), service);
 		}
 
 		/**

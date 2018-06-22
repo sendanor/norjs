@@ -11,7 +11,7 @@ export default function ModuleServiceFactory (AbstractModuleService) {
 	 */
 	return class ModuleService extends AbstractModuleService  {
 
-		static getNorName () {
+		static norName () {
 			return "ModuleService";
 		}
 

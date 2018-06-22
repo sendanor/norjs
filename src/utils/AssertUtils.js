@@ -9,7 +9,7 @@ export default function AssertUtilsFactory (AbstractUtils) {
 
 	return class AssertUtils extends AbstractUtils {
 
-		static getNorName () {
+		static norName () {
 			return "AssertUtils";
 		}
 

@@ -51,7 +51,18 @@ Filter name should be suffixed to `Filter`, eg `TextFilter`.
 Any other controller name should be suffixed to `Controller`, eg. `TextController`, except if it has a common abstract 
 class, in which case it should follow the name of the abstract class.
 
+##### Mixins
+
+Mixin name should be suffixed to `Mixin`, eg `ObservableMixin`.
+
+Mixin is a feature in a class. You can use multiple mixins to construct new classes with merged features.
+
 #### Naming variables, methods and functions 
+
+##### NorJS public names
+
+Public NorJS names start with a prefix `Nor` (classes or service instances) or 
+`nor` (methods, etc).
 
 ##### Private names
 

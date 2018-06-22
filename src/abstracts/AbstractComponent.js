@@ -9,11 +9,11 @@ export default function AbstractComponentFactory (AbstractController) {
 
 	return class AbstractComponent extends AbstractController {
 
-		static getType () {
+		static norType () {
 			return "Component";
 		}
 
-		static getName () {
+		static norName () {
 			return "AbstractComponent";
 		}
 
