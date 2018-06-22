@@ -10,7 +10,7 @@ affect how you name your own methods. See also our
 You can and should override these methods in your own derived classes to 
 customize functionality.
 
-================================================================================
+--------------------------------------------------------------------------------
 
 ### Information about the class
 
@@ -53,7 +53,7 @@ Returns the class constructor.
 It can be used on both as a static method (called on the class constructor) as 
 well as on any instance object. 
 
-================================================================================
+--------------------------------------------------------------------------------
 
 ### Information about the HTML element
 
@@ -74,7 +74,7 @@ to the controller member variables.
 
 This follows the same format as in AngularJS.
 
-================================================================================
+--------------------------------------------------------------------------------
 
 ### Life cycle handlers
 
@@ -114,7 +114,7 @@ You may also return a promise.
 
 This is same as AngularJS `.$onChanges()`.
 
-================================================================================
+--------------------------------------------------------------------------------
 
 ### Life cycle handler implementations
 
@@ -141,7 +141,7 @@ You may also return a promise.
 **Note!** You need to make sure each `.norDestroy()` implementation 
 is called, or call a `super.norDoDestroy()`, which does that for you.
 
-### `.norDoChanges(changes)`
+#### `.norDoChanges(changes)`
 
 Same as AngularJS `$onChanges()`.
 
