@@ -1,3 +1,10 @@
+
+***Warning!*** This project is not the same as our newer commercial NorJS project at www.norjs.com.
+
+It has been just left here for history. *This repository is not in active development.*
+
+-------------------------------------------
+
 [![view on npm](http://img.shields.io/npm/v/norjs.svg)](https://www.npmjs.org/package/norjs)
 [![npm module downloads](http://img.shields.io/npm/dt/norjs.svg)](https://www.npmjs.org/package/norjs)
 [![Build Status](https://travis-ci.org/sendanor/norjs.svg?branch=master)](https://travis-ci.org/sendanor/norjs)
