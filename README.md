@@ -18,8 +18,6 @@ It has been just left here for history. *This repository is not in active develo
 
 It has working module system, but it still lacks a lot of features. 
 
-You can <a href="https://www.bountysource.com/teams/norjs">help us</a> finish it, and earn some bounties while doing that.
-
 ## Requirements
 
 For development, you will only need NPM installed on your environment.
