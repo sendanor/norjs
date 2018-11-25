@@ -1,5 +1,5 @@
 
-***Warning!*** This project is not the same as our newer commercial NorJS project at www.norjs.com.
+***Warning!*** This project has been discontinued and the NorJS Runtime Environment will continue it at [norjs/norjs](https://github.com/norjs/norjs).
 
 It has been just left here for history. *This repository is not in active development.*
 
